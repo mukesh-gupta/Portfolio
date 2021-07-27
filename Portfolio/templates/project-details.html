@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+<title>{% block title %}Detail{% endblock %}</title>
+</head>
+
+<body>
+{% block content %}
+<!-- ======= Mobile nav toggle button ======= -->
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="d-flex flex-column">
+
+        <div class="profile">
+            <img src="{% static 'img/mukesh.jpg' %}" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-light"><a href="{% url 'home' %}">Mukesh Gupta</a></h1>
+            <div class="social-links mt-3 text-center">
+                <a href="https://github.com/mukesh-gupta" class="github"><i class="bx bxl-github"></i></a>
+
+                <a href="https://www.linkedin.com/in/mukesh-gupta-669b21193/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+
+        <nav id="navbar" class="nav-menu navbar">
+            <ul>
+                <li><a href="{% url 'home' %}" class="nav-link scrollto active"><i class="bx bx-home"></i>
+                    <span>Home</span></a></li>
+            </ul>
+        </nav><!-- .nav-menu -->
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Project Details</h2>
+                <ol>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Project Details</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+                <h1>Project User Interface</h1>
+                <div class="col-lg-8">
+                    <div class="portfolio-details-slider swiper-container">
+                        <div class="swiper-wrapper align-items-center">
+                            <div class="swiper-slide">
+                                <img src="{{project.img_1.url}}" alt="">
+                            </div>
+
+                            <div class="swiper-slide">
+                                <img src="{{project.img_2.url}}" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{project.img_3.url}}" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{project.img_4.url}}" alt="">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="{{project.img_5.url}}" alt="">
+                            </div>
+
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="portfolio-info">
+                        <h3>Project information</h3>
+                        <ul>
+                            <li><strong>Project Title :</strong></li>
+                            <br>
+                            <p>{{project.proj_title}}</p>
+                            <hr>
+                            <li><strong>Project date</strong></li>
+                            <br>
+                            <p>{{project.proj_stdt|date:"M Y"}} - {{project.proj_eddt|date:"M Y"}}</p>
+                            <hr>
+                            <li><strong>Project URL</strong>:</li>
+                            <br>
+
+                            <a href="{{project.proj_url}}">{{project.proj_url}}</a>
+                            <hr>
+                            <li><strong>Project Source Code</strong>:</li>
+                            <br>
+                            <a href="{{project.proj_sc}}">{{project.proj_sc}}</a>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="portfolio-description">
+                    <h2>Description About Project</h2>
+                    <p>
+                        <strong>Front End :</strong> {{project.front_e}}
+                    </p>
+                    <p>
+                        <strong>Back End :</strong> {{project.back_e}}
+                    </p>
+                    <p>
+                        {{project.proj_desc}}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            <strong><span>Mukesh Gupta</span></strong>
+        </div>
+        <div class="credits">
+
+        </div>
+    </div>
+</footer>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+{% block content %}
+
+
+
+<!-- ======= Mobile nav toggle button ======= -->
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<!-- ======= Header ======= -->
+<header id="header">
+
+    <div class="d-flex flex-column">
+
+        <div class="profile">
+            <img src="{% static 'img/mukesh.jpg' %}" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-light"><a href="{% url 'home' %}">Mukesh Gupta</a></h1>
+            <div class="social-links mt-3 text-center">
+
+                <a href="https://github.com/mukesh-gupta" class="github"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/mukesh-gupta-669b21193/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+
+        <nav id="navbar" class="nav-menu navbar">
+            <ul>
+                <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a>
+                </li>
+                <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+                <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a>
+                </li>
+                <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i>
+                    <span>Projects</span></a></li>
+                <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a>
+                </li>
+            </ul>
+        </nav><!-- .nav-menu -->
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    {% for message in messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert" style="width:75%;z-index:1">
+  <strong>{{ message }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+    <div class="hero-container" data-aos="fade-in">
+        <h1>Mukesh Gupta</h1>
+        <p>Technical Skills are <span class="typed"
+                                      data-typed-items="Python, Django, MySQL, HTML5, CSS3, JavaScript, Bootstrap, Numpy, Pandas, Matplotlib, Seaborn, Machine Learning"></span>
+        </p>
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>About</h2>
+                <p>A portfolio is a sample of our career related skills and experiences and should be presented in our own creative style.
+                    The following is typically included in my career portfolio.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-right">
+                    {% for ab in about %}
+                    <img src="{{ab.img.url}}" class="img-fluid" alt="">
+                    {% endfor %}
+                </div>
+                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+                    {% for ab in about %}
+                    <h3>{{ab.work_field}}</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>{{ab.name}}</span>
+                                </li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong>
+                                    <span>{{ab.birth}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Gender:</strong>
+                                    <span>{{ab.gender}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
+                                    <span>+91{{ab.phone}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>{{ab.age}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-7">
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                                    <span>{{ab.email}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Languages:</strong>
+                                    <span>{{ab.lang}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Hobbies:</strong>
+                                    <span>    {{ab.hobb}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{ab.city}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>
+                        {{ab.desc}}
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Facts Section ======= -->
+
+
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Skills</h2>
+                <p>Here I mentioned my all technical skills.</p>
+            </div>
+
+            <div class="row skills-content">
+                {% for skill in skills %}
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="progress">
+                        <span class="skill">{{skill.sub}} <i class="val">{{skill.perc}}%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{skill.perc}}"
+                                 aria-valuemin="0" aria-valuemax="{{skill.perc}}"></div>
+                        </div>
+                    </div>
+
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Skills Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+        <div class="container">
+
+            <div class="section-title">
+                <h4 style="text-align:center"><a href="{% static 'mukesh-resume.pdf' %}">View or Download Resume</a>
+                </h4><br><br>
+                <h2>Resume</h2>
+                <p>This is my resume. I put here my all Educations,Certifications & Projects details.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <h3 class="resume-title">Objective</h3>
+                    {% for rm in resume %}
+                    <div class="resume-item pb-0">
+                        <h4>Mukesh Gupta</h4>
+                        <p>{{rm.obj}}</p>
+
+                    </div>
+                    {% endfor %}
+
+                    <h3 class="resume-title">Educations</h3>
+                    {% for e in edu %}
+                    <div class="resume-item">
+                        <h4>{{e.edu_course}}</h4>
+                        <h5>{{e.edu_stdt | date:"Y"}} - {{e.edu_eddt| date:"Y"}} </h5>
+                        <p>{{e.edu_clg}}</p>
+                        {% if '(HSC)'  in e.edu_course %}
+                        <p>{{e.edu_mark}} %</p>
+                        {% elif '(SSC)' in e.edu_course %}
+                         <p>{{e.edu_mark}} %</p>
+                        {% else %}
+                         <p>{{e.edu_mark}} (CGPA)</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <h3 class="resume-title">Projects</h3>
+                    {% for p in Proj %}
+                    <div class="resume-item">
+                        <h4>{{p.proj_title}}</h4>
+                        <h5>2017 - 2018</h5>
+                        <p>Project Link :<a href="{{p.proj_url}}">{{p.proj_url}}</a></p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="resume-title">Certifications</h3>
+                    {% for c in cert %}
+                    <div class="resume-item">
+                        <ul>
+                            <li>{{c.cert_name}}</li>
+                            <p>Certificate Link:</p>
+                            <a href="{{c.cert_url}}">{{c.cert_name}}</a>
+
+                        </ul>
+                    </div>
+                    {% endfor %}
+
+
+                    <h3 class="resume-title">Additional Skils</h3>
+                    {% for a in about %}
+                    <div class="resume-item">
+                        <p>{{a.add_skill}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+
+        </div>
+    </section><!-- End Resume Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Projects</h2>
+                <p>In this section, I have added my all projects which I have done.</p>
+            </div>
+
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                {% for p in Proj %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="portfolio-wrap" style="text-align:center">
+                        <img src="{{p.proj_img.url}}" class="img-fluid" alt="">
+                        <div class="portfolio-links">
+
+                            <a href="{{p.proj_img.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox"
+                               title="{{p.proj_title}}"><i class="bx bx-plus"></i></a>
+                            <a href="{% url 'detail' p.id %}" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Here is my Contact details. you can contact me by these.</p>
+            </div>
+
+            <div class="row" data-aos="fade-in">
+                {% for c in contact %}
+                <div class="col-lg-5 d-flex align-items-stretch">
+                    <div class="info">
+                        <div class="address">
+                            <i class="bi bi-geo-alt"></i>
+                            <h4>Location:</h4>
+                            <p>{{c.about.city}}</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="bi bi-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>{{c.about.email}}</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="bi bi-phone"></i>
+                            <h4>Call:</h4>
+                            <p>+91 {{c.about.phone}}</p>
+                        </div>
+
+                        <div class="linkedin">
+                            <i class="bi bi-linkedin"></i>
+                            <h4>Linkedin:</h4>
+                            <p>
+                                <a href="{{c.linked_in}}">
+                                    {{c.linked_in}}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="github">
+                            <i class="bi bi-github"></i>
+                            <h4>GitHub:</h4>
+                            <p>
+                                <a href="{{c.git}}">
+                                    {{c.git}}
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                    <form action="" method="post" role="form" class="my-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Your Name</label>
+                                <input type="text" name="name" class="form-control" id="name" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="name">Your Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Subject</label>
+                            <input type="text" class="form-control" name="subject" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Message</label>
+                            <textarea class="form-control" name="message" rows="10" required></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            <strong><span>Mukesh Gupta</span></strong>
+        </div>
+    </div>
+</footer>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+
+{% endblock %}
+
+</body>
+
+</html>
